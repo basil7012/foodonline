@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %}
+{% block content %}
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+        {% for i in prod %}
+
+        -------------------------------
+        <li class="one_third">
+          <figure><a class="imgover" href="{{ i.get_url }}"><img src="{{ i.img.url }}" alt="" style="height:300"></a>
+            <figcaption>
+              <h6 class="heading">{{i.name}}</h6>
+              <p>{{i.desc|truncatechars:17}}</p>
+              <p>{{i.price}}</p>
+              <p>STOCK LEFT :{{i.stock}}</p>
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+        ---------------------------
+
+
+
+
+
+
+
+
+
+
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'hm/layout/scripts/jquery.min.js'%}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.backtotop.js'%}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js'%}"></script>
+</body>
+</html>
+{% endblock %}

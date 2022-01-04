@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+<div class="w3-card-4 w3-margin" style="width:50%">
+  <div class="w3-display-container w3-text-white">
+    <img src="{{ pr.img.url}}" alt="Lights" style="width:100%">
+    <div class="w3-xlarge w3-display-bottomleft w3-padding"></div>
+  </div>
+  <div class="w3-row">
+    <div class="w3-third w3-center">
+      <h2 class="tm-mb-2 tm-title-color">{{ pr.name }}</h2>
+
+    </div>
+
+    <div class="w3-third w3-center">
+      <h3>PRICE: {{pr.price}}</h3>
+
+    </div>
+    <div class="w3-third w3-center w3-margin-bottom">
+      <h3>DETAILS:{{pr.desc}}</h3>
+
+    </div>
+    <div class="w3-third w3-center w3-margin-bottom">
+      <h3>STOCK:{{pr.stock}}</h3>
+       </div>
+  </div>
+</div>
+<div style="text-align:center;">
+      {% if pr.stock <= 0 %}
+      <h1 style="color:red">SORRY NO STOCK LEFT</h1>
+      {% else %}
+      <a href="{% url 'add_cart' pr.id %}"  class="w3-button w3-black text-left">ADD TO CART</a>
+      {% endif %}
+</div>
+
+</body>
+</html>
+{% endblock %}
